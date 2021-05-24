@@ -25,6 +25,7 @@ abstract class Routes {
   static const REQUEST_DETAIL = _Paths.REQUEST_DETAIL;
   static const PROFILE_EVANT_MACKER = _Paths.PROFILE_EVANT_MACKER;
   static const NOTIFACTION = _Paths.NOTIFACTION;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -51,4 +52,5 @@ abstract class _Paths {
   static const REQUEST_DETAIL = '/RequestDetailView';
   static const PROFILE_EVANT_MACKER = '/profile-evant-macker';
   static const NOTIFACTION = '/notifaction';
+  static const SETTINGS = '/settings';
 }

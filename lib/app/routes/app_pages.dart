@@ -38,6 +38,8 @@ import 'package:app_lazam/app/modules/request/detail/bindings/request_detail_bin
 import 'package:app_lazam/app/modules/request/detail/views/request_detail_view.dart';
 import 'package:app_lazam/app/modules/request/list/bindings/request_list_binding.dart';
 import 'package:app_lazam/app/modules/request/list/views/request_list_view.dart';
+import 'package:app_lazam/app/modules/settings/bindings/settings_binding.dart';
+import 'package:app_lazam/app/modules/settings/views/settings_view.dart';
 
 part 'app_routes.dart';
 
@@ -139,6 +141,11 @@ class AppPages {
       name: _Paths.NOTIFACTION,
       page: () => NotifactionView(),
       binding: NotifactionBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }
