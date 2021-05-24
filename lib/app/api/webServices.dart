@@ -56,21 +56,44 @@ class WebServices extends ApiManger {
     @required int cityId,
     String imageBytes = '',
   }) async {
-    ResponsModel response = await repPost('Account/Register', {
-        "Name": fullName,
-        "Description": description,
-        "Role": userType,
-        "Address": address,
-        "Email": email,
-        "UserName": phoneNumber,
-        "PhoneNumber": phoneNumber,
-        "Password": password,
-        "ConfirmPassword": password,
-        "Logo": "temp.jpg",
-        "LogoBytes": imageBytes.toString(),
-        "CityId": cityId,
-         "Status": 0,
-    } ,showLoading: true);
+    ResponsModel response = await repPost(
+        'Account/Register',
+        {
+          "Name": fullName,
+          "Description": description,
+          "Role": userType,
+          "Address": address,
+          "Email": email,
+          "UserName": phoneNumber,
+          "PhoneNumber": phoneNumber,
+          "Password": password,
+          "ConfirmPassword": password,
+          "Logo": "temp.jpg",
+          "LogoBytes": imageBytes.toString(),
+          "CityId": cityId,
+          "Status": 0,
+        },
+        showLoading: true);
     return response;
   }
+
+  Future<ResponsModel> addOffer({
+    @required String name,
+    @required double price,
+    @required String description,
+  }) async {
+    ResponsModel response = await repPost('Offer/Add', {
+      "Name": name,
+      "Price": price,
+      "Description": description,
+    },showLoading: true);
+    return response;
+  }
+
+  Future<ResponsModel> getOffers() async {
+    ResponsModel response = await repGet('Offer/Get',showLoading: true);
+    return response;
+  }
+
+
 }

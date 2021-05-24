@@ -11,6 +11,7 @@ Widget defaultButton({
 }) =>
     MaterialButton(
       minWidth: width,
+      
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -18,7 +19,7 @@ Widget defaultButton({
         ),
       ),
       textColor: textColor,
-      height: 45,
+      height: 50,
       color: buttonColor,
       onPressed: onClick,
       child: Text(buttontext),

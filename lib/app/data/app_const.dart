@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 const AppName = 'Lazam';
 const KprimaryColor = Color(0xff5EAF6B);
-const KsecondaryColor = Color(0xffF4F4F4);
+const KsecondaryColor = Color(0xffF6F6F6);
 
 UserModel userModel;
 

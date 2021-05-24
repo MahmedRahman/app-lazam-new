@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 class AuthSplashController extends GetxController {
   //TODO: Implement AuthSplashController
 
+  
+
   @override
   void onInit() {
     super.onInit();
@@ -24,7 +26,7 @@ class AuthSplashController extends GetxController {
 
     ResponsModel UserCityModel = await WebServices().getCity();
     if (UserCityModel.success) {
-      Response response=UserCityModel.data;
+      Response response = UserCityModel.data;
       userCity = response.body;
     }
 
@@ -39,7 +41,10 @@ class AuthSplashController extends GetxController {
 
       if (responsModel.success) {
         Response response = responsModel.data;
+
         userModel = userModelFromJson(response.bodyString);
+        Get.toNamed(Routes.AUTH_INTRODUCTION);
+      } else {
         Get.toNamed(Routes.AUTH_INTRODUCTION);
       }
     }

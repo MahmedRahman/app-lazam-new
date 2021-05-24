@@ -13,63 +13,84 @@ class ProfileFoodProviderView extends GetView<ProfileFoodProviderController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ProfileFoodProviderView'),
-        centerTitle: true,
-      ),
       body: Directionality(
         textDirection: TextDirection.rtl,
-        child: ListView(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            defaultImagePicker(
-              backgroundImage: AssetImage('images/avater.png'),
-              onPressed: () {},
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 10,
               ),
-              child: CustomTextEdit(
-                title: 'الاسم',
-                textHint: userModel.email.toString(),
+              defaultImagePicker(
+                backgroundImage: AssetImage('images/avater.png'),
+                onPressed: () {},
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ListTile(
-              leading: Text('البريد الالكترونى'),
-              title: Text('${userModel.email.toString()}'),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ListTile(
-              leading: Text('رقم الاتصال'),
-              title: Text('${userModel.phoneNumber.toString()}'),
-            ),
-            ListTile(
-              leading: Text('العنوان'),
-              title: Text('${userModel.address.toString()}'),
-            ),
-            ListTile(
-              leading: Text('المدينة'),
-              title: Text('${userModel.name.toString()}'),
-            ),
-            ListTile(
-              leading: Text('الوصف'),
-              title: Text('${userModel.description.toString()}'),
-            ),
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                readOnly: true,
+                initialValue: 'atp',
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'أسم المستخدم',
+                  suffixIcon: Icon(Icons.lock),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: 'محمد عبد الرحمن',
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'الاسم'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: '01002089079',
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'رقم الاتصال'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: 'atp2020@outlook.com',
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'ألبريد الالكترونى'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: 'الرياض',
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'المدينة'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                initialValue: 'مطعم البيك للوجبات السريعة',
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'الوصف'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('تعديل الملف الشخصى'),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+            ],
+          ),
         ),
       ),
     );

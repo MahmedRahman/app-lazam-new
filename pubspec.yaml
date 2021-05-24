@@ -34,6 +34,9 @@ dependencies:
   loading_indicator: ^1.2.0
   flutter_easyloading: ^3.0.0
   get_storage: ^2.0.1
+  flutter_slider_drawer: ^2.0.0
+  curved_navigation_bar: ^0.3.7
+
   
 dev_dependencies:
   flutter_test:
@@ -52,3 +55,8 @@ flutter:
        - asset: fonts/ElMessiri-Medium.ttf
        - asset: fonts/ElMessiri-Regular.ttf
        - asset: fonts/ElMessiri-SemiBold.ttf
+   - family: Tajawal
+     fonts:
+       - asset: fonts/Tajawal/Tajawal-Bold.ttf
+       - asset: fonts/Tajawal/Tajawal-Medium.ttf
+       - asset: fonts/Tajawal/Tajawal-Regular.ttf

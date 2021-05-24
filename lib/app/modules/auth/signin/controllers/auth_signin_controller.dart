@@ -13,10 +13,11 @@ class AuthSigninController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    phoneTextController.text = "01113403049";
+    passwordTextController.text = "123456";
   }
 
   void login() async {
-
     ResponsModel responsModel = await WebServices().signin(
       phone: phoneTextController.text,
       password: passwordTextController.text,
@@ -27,15 +28,10 @@ class AuthSigninController extends GetxController {
       Get.find<UserAuth>().setUserToken(response.body['access_token']);
 
       if (response.body['Role'] == "Food Provider") {
-
         Get.offAllNamed(Routes.LAYOUT_FOOD_PROVIDER);
-      
       } else {
-      
         Get.offAllNamed(Routes.LAYOUT_HOST);
-      
       }
-
     } else {
       Get.snackbar(AppName, 'خطاء فى كلمة المرور و كلمة السر');
     }

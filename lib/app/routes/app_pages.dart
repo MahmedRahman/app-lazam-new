@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:app_lazam/app/modules/Profile_evant_macker/bindings/profile_evant_macker_binding.dart';
+import 'package:app_lazam/app/modules/Profile_evant_macker/views/profile_evant_macker_view.dart';
 import 'package:app_lazam/app/modules/auth/forget_password/bindings/auth_forget_password_binding.dart';
 import 'package:app_lazam/app/modules/auth/forget_password/views/auth_forget_password_view.dart';
 import 'package:app_lazam/app/modules/auth/introduction/bindings/auth_introduction_binding.dart';
@@ -20,8 +22,22 @@ import 'package:app_lazam/app/modules/layout_food_provider/bindings/layout_food_
 import 'package:app_lazam/app/modules/layout_food_provider/views/layout_food_provider_view.dart';
 import 'package:app_lazam/app/modules/layout_host/bindings/layout_host_binding.dart';
 import 'package:app_lazam/app/modules/layout_host/views/layout_host_view.dart';
+import 'package:app_lazam/app/modules/notifaction/bindings/notifaction_binding.dart';
+import 'package:app_lazam/app/modules/notifaction/views/notifaction_view.dart';
+import 'package:app_lazam/app/modules/offer_fb/add/bindings/offer_fb_add_binding.dart';
+import 'package:app_lazam/app/modules/offer_fb/add/views/offer_fb_add_view.dart';
+import 'package:app_lazam/app/modules/offer_fb/detail/bindings/offer_fb_detail_binding.dart';
+import 'package:app_lazam/app/modules/offer_fb/detail/views/offer_fb_detail_view.dart';
+import 'package:app_lazam/app/modules/offer_fb/list/bindings/offer_fb_list_binding.dart';
+import 'package:app_lazam/app/modules/offer_fb/list/views/offer_fb_list_view.dart';
+import 'package:app_lazam/app/modules/offer_fb/request_history/bindings/offer_fb_request_history_binding.dart';
+import 'package:app_lazam/app/modules/offer_fb/request_history/views/offer_fb_request_history_view.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/bindings/profile_food_provider_binding.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/views/profile_food_provider_view.dart';
+import 'package:app_lazam/app/modules/request/detail/bindings/request_detail_binding.dart';
+import 'package:app_lazam/app/modules/request/detail/views/request_detail_view.dart';
+import 'package:app_lazam/app/modules/request/list/bindings/request_list_binding.dart';
+import 'package:app_lazam/app/modules/request/list/views/request_list_view.dart';
 
 part 'app_routes.dart';
 
@@ -83,6 +99,46 @@ class AppPages {
       name: _Paths.LAYOUT_HOST,
       page: () => LayoutHostView(),
       binding: LayoutHostBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_FB_LIST,
+      page: () => OfferFbListView(),
+      binding: OfferFbListBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_FB_ADD,
+      page: () => OfferFbAddView(),
+      binding: OfferFbAddBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_FB_DETAIL,
+      page: () => OfferFbDetailView(),
+      binding: OfferFbDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_FB_REQUEST_HISTORY,
+      page: () => OfferFbRequestHistoryView(),
+      binding: OfferFbRequestHistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.REQUEST_LIST,
+      page: () => RequestListView(),
+      binding: RequestListBinding(),
+    ),
+    GetPage(
+      name: _Paths.REQUEST_DETAIL,
+      page: () => RequestDetailView(),
+      binding: RequestDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_EVANT_MACKER,
+      page: () => ProfileEvantMackerView(),
+      binding: ProfileEvantMackerBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFACTION,
+      page: () => NotifactionView(),
+      binding: NotifactionBinding(),
     ),
   ];
 }

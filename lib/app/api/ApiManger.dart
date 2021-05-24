@@ -43,7 +43,7 @@ class ApiManger extends GetConnect {
       switch (response.statusCode) {
         case 200:
           if (showLoading) {
-            EasyLoading.showSuccess('تم التحميل');
+            EasyLoading.dismiss();
           }
 
           return ResponsModel(
@@ -116,7 +116,7 @@ class ApiManger extends GetConnect {
       switch (response.statusCode) {
         case 200:
           if (showLoading) {
-            EasyLoading.showSuccess('تم التحميل');
+            EasyLoading.dismiss();
           }
           return ResponsModel(
             code: response.statusCode,
