@@ -29,6 +29,14 @@ class ProfileFoodProviderView extends GetView<ProfileFoodProviderController> {
               SizedBox(
                 height: 20,
               ),
+              Text(
+                'بيانات شخصية',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Divider(),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 readOnly: true,
                 initialValue: 'atp',
@@ -39,7 +47,27 @@ class ProfileFoodProviderView extends GetView<ProfileFoodProviderController> {
                 ),
               ),
               SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                readOnly: true,
+                initialValue: 'atp',
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'كلمة السر',
+                  suffixIcon: Icon(Icons.lock),
+                ),
+              ),
+              SizedBox(
                 height: 20,
+              ),
+              Text(
+                'بيانات البروفايل',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Divider(),
+              SizedBox(
+                height: 10,
               ),
               TextFormField(
                 initialValue: 'محمد عبد الرحمن',

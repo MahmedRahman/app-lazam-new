@@ -1,12 +1,15 @@
+import 'package:app_lazam/app/modules/request/list/model/request_model.dart';
 import 'package:app_lazam/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/request_list_controller.dart';
 
 class RequestListView extends GetView<RequestListController> {
+  RequestListController controller = Get.put(RequestListController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +45,13 @@ class RequestListView extends GetView<RequestListController> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Expanded(child: TextFormField(
-                                
+                              Expanded(
+                                  child: TextFormField(
                                 decoration: InputDecoration(
-                                  isDense: true,
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(Icons.search),
-                                  hintText: 'بحث'
-                                ),
+                                    isDense: true,
+                                    border: OutlineInputBorder(),
+                                    suffixIcon: Icon(Icons.search),
+                                    hintText: 'بحث'),
                               )),
                               SizedBox(
                                 width: 10,
@@ -76,117 +78,138 @@ class RequestListView extends GetView<RequestListController> {
                 ),
               ],
             ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: List.generate(
-                  10,
-                  (index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: InkWell(
-                        onTap: () {
-                          Get.toNamed(Routes.REQUEST_DETAIL);
-                        },
-                        child: Card(
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          'اسم العرض',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          'محمد عبد الرحمن',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          'تاريخ المناسبة',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          'عيد ميلاد صديقي',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          'عدد الضيوف',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '50',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+            Obx(() {
+              return FutureBuilder(
+                  future: controller.listRequestModel.value,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<RequestModel> requestModel = snapshot.data;
+                      if (requestModel.length == 0) {
+                        return Center(
+                          child: Text('لا يوجود بيانات'),
+                        );
+                      } else {
+                        return ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: List.generate(
+                            requestModel.length,
+                            (index) => requestItem(
+                              requestModel: requestModel.elementAt(index),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }
+                    }
+
+                    return Center(
+                      child: CircularProgressIndicator(),
                     );
-                  },
-                ),
-              ),
-            )
+                  });
+            })
           ],
         ),
       ),
     );
   }
+
+  Widget requestItem({@required RequestModel requestModel}) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(Routes.REQUEST_DETAIL, arguments: [requestModel]);
+          },
+          child: Card(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'اسم العرض',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            requestModel.offerName,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'تاريخ المناسبة',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            DateFormat.yMMMd()
+                                .format(requestModel.date)
+                                .toString(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'عدد الضيوف',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            requestModel.itemCount.toString(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
 }

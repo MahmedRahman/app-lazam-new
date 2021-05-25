@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/modules/notifaction/views/notifaction_view.dart';
-import 'package:app_lazam/app/modules/offer_fb/list/views/offer_fb_list_view.dart';
+import 'package:app_lazam/app/modules/offer/list/views/offer_fb_list_view.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/views/profile_food_provider_view.dart';
 import 'package:app_lazam/app/modules/request/list/views/request_list_view.dart';
 import 'package:app_lazam/app/modules/settings/views/about_view.dart';
@@ -30,7 +30,7 @@ class LayoutFoodProviderView extends GetView<LayoutFoodProviderController> {
     ProfileFoodProviderView()
   ];
 
-  var selectScreen = 2.obs;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

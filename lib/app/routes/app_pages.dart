@@ -1,3 +1,5 @@
+import 'package:app_lazam/app/modules/request/request_history/bindings/offer_fb_request_history_binding.dart';
+import 'package:app_lazam/app/modules/request/request_history/views/offer_fb_request_history_view.dart';
 import 'package:get/get.dart';
 
 import 'package:app_lazam/app/modules/Profile_evant_macker/bindings/profile_evant_macker_binding.dart';
@@ -24,14 +26,12 @@ import 'package:app_lazam/app/modules/layout_host/bindings/layout_host_binding.d
 import 'package:app_lazam/app/modules/layout_host/views/layout_host_view.dart';
 import 'package:app_lazam/app/modules/notifaction/bindings/notifaction_binding.dart';
 import 'package:app_lazam/app/modules/notifaction/views/notifaction_view.dart';
-import 'package:app_lazam/app/modules/offer_fb/add/bindings/offer_fb_add_binding.dart';
-import 'package:app_lazam/app/modules/offer_fb/add/views/offer_fb_add_view.dart';
-import 'package:app_lazam/app/modules/offer_fb/detail/bindings/offer_fb_detail_binding.dart';
-import 'package:app_lazam/app/modules/offer_fb/detail/views/offer_fb_detail_view.dart';
-import 'package:app_lazam/app/modules/offer_fb/list/bindings/offer_fb_list_binding.dart';
-import 'package:app_lazam/app/modules/offer_fb/list/views/offer_fb_list_view.dart';
-import 'package:app_lazam/app/modules/offer_fb/request_history/bindings/offer_fb_request_history_binding.dart';
-import 'package:app_lazam/app/modules/offer_fb/request_history/views/offer_fb_request_history_view.dart';
+import 'package:app_lazam/app/modules/offer/add/bindings/offer_fb_add_binding.dart';
+import 'package:app_lazam/app/modules/offer/add/views/offer_fb_add_view.dart';
+import 'package:app_lazam/app/modules/offer/detail/bindings/offer_fb_detail_binding.dart';
+import 'package:app_lazam/app/modules/offer/detail/views/offer_fb_detail_view.dart';
+import 'package:app_lazam/app/modules/offer/list/bindings/offer_fb_list_binding.dart';
+import 'package:app_lazam/app/modules/offer/list/views/offer_fb_list_view.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/bindings/profile_food_provider_binding.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/views/profile_food_provider_view.dart';
 import 'package:app_lazam/app/modules/request/detail/bindings/request_detail_binding.dart';

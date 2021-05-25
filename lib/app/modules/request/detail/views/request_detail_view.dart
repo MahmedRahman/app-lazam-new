@@ -1,13 +1,16 @@
 import 'package:app_lazam/app/data/app_const.dart';
+import 'package:app_lazam/app/modules/request/detail/views/request_event_macker_profile.dart';
 import 'package:app_lazam/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/request_detail_controller.dart';
 
 class RequestDetailView extends GetView<RequestDetailController> {
+  RequestDetailController controller = Get.put(RequestDetailController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +45,7 @@ class RequestDetailView extends GetView<RequestDetailController> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.toNamed(Routes.PROFILE_EVANT_MACKER);
+                      Get.to(ProfileEvantMackerView(), fullscreenDialog: true);
                     },
                     child: Text('الملف الشخصي'),
                   ),
@@ -56,18 +59,21 @@ class RequestDetailView extends GetView<RequestDetailController> {
                     child: Row(
                       children: [
                         Text(
-                          'الحـالة',
+                          'الحالة',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           width: 5,
                         ),
                         Text(
-                          'اكتملت التفاصيل',
+                          OfferStatus.values[controller.requestItem.status]
+                              .toString(),
                           style: TextStyle(
+                            fontSize: 10,
                             color: KprimaryColor,
                             fontWeight: FontWeight.bold,
                           ),
+                          overflow: TextOverflow.clip,
                         ),
                       ],
                     ),
@@ -87,29 +93,31 @@ class RequestDetailView extends GetView<RequestDetailController> {
               height: 10,
             ),
             TextFormField(
-              initialValue: 'محمد عبد الرحمن',
+              initialValue: controller.requestItem.eventMakerName,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'اسم صاحب المناسبة',
-                  suffixIcon: Icon(Icons.lock)),
+                border: OutlineInputBorder(),
+                labelText: 'اسم صاحب المناسبة',
+                suffixIcon: Icon(Icons.lock),
+              ),
               readOnly: true,
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
-              initialValue: 'عيد ميلاد',
+              initialValue:controller.requestItem.eventName,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'اسم المناسبة',
-                  suffixIcon: Icon(Icons.lock)),
+                border: OutlineInputBorder(),
+                labelText: 'اسم المناسبة',
+                suffixIcon: Icon(Icons.lock),
+              ),
               readOnly: true,
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
-              initialValue: 'أعياد ميلاد',
+              initialValue: controller.requestItem.eventCategory,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'فئة المناسبة',
@@ -120,18 +128,19 @@ class RequestDetailView extends GetView<RequestDetailController> {
               height: 20,
             ),
             TextFormField(
-              initialValue: '13 Oct 2021',
+              initialValue: DateFormat.yMMMd().format(controller.requestItem.date).toString(),
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'التاريخ',
-                  suffixIcon: Icon(Icons.lock)),
+                border: OutlineInputBorder(),
+                labelText: 'التاريخ',
+                suffixIcon: Icon(Icons.lock),
+              ),
               readOnly: true,
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
-              initialValue: '60',
+              initialValue: controller.requestItem.itemCount.toString(),
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'عدد المدعوين',

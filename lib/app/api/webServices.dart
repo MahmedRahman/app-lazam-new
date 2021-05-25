@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:app_lazam/app/api/response_model.dart';
 import 'package:app_lazam/app/data/app_const.dart';
+import 'package:app_lazam/app/modules/offer/list/model/offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:app_lazam/app/api/ApiManger.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -12,6 +13,7 @@ class WebServices extends ApiManger {
     @required String phone,
     @required String password,
   }) async {
+    
     EasyLoading.show(status: 'جارى التحميل');
 
     var formData =
@@ -82,18 +84,51 @@ class WebServices extends ApiManger {
     @required double price,
     @required String description,
   }) async {
-    ResponsModel response = await repPost('Offer/Add', {
-      "Name": name,
-      "Price": price,
-      "Description": description,
-    },showLoading: true);
+    ResponsModel response = await repPost(
+        'Offer/Add',
+        {
+          "Name": name,
+          "Price": price,
+          "Description": description,
+        },
+        showLoading: true);
     return response;
   }
 
   Future<ResponsModel> getOffers() async {
-    ResponsModel response = await repGet('Offer/Get',showLoading: true);
+    ResponsModel response = await repGet('Offer/Get', showLoading: true);
+    return response;
+  }
+
+  Future<ResponsModel> editOffersDetaile({
+    @required OffersModel offersModel,
+  }) async {
+    ResponsModel response = await repPost(
+      'Offer/Edit/${offersModel.id}',
+      offersModel.toJson(),
+      showLoading: true,
+    );
+    return response;
+  }
+
+  Future<ResponsModel> getRequestsByOffer({@required String offerID}) async {
+    ResponsModel response = await repGet(
+        'EventOffer/GetByOffer/${offerID.toString()}',
+        showLoading: false);
     return response;
   }
 
 
+  Future<ResponsModel> getRequest() async {
+    ResponsModel response = await repGet('EventOffer/Get', showLoading: true);
+    return response;
+  }
+
+  Future<ResponsModel> getNotification() async {
+    ResponsModel response = await repGet('Account/Notification', showLoading: true);
+    return response;
+  }
+
+  
+  
 }
