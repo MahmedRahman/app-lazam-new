@@ -50,7 +50,9 @@ class PickYouImage {
         return Future.error('error');
       });
     } else {
-      print('لم يتم اختيار صورة');
+            print('لم يتم اختيار صورة');
+      return '';
+
     }
   }
 

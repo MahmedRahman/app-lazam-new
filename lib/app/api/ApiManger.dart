@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:app_lazam/app/api/auth.dart';
 import 'package:app_lazam/app/api/response_model.dart';
+import 'package:app_lazam/app/data/app_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/connect.dart';
 
-const baes_url = 'https://lazam.atpnet.net/api/';
 
 class ApiManger extends GetConnect {
   var header = {
@@ -37,7 +37,7 @@ class ApiManger extends GetConnect {
 
     login();
 
-    Response response = await post(baes_url + url, body, headers: header);
+    Response response = await post(baes_url + 'api/' + url, body, headers: header);
 
     try {
       switch (response.statusCode) {
@@ -103,7 +103,7 @@ class ApiManger extends GetConnect {
     if (GetUtils.isURL(url)) {
       response = await get(url, headers: header);
     } else {
-      response = await get(baes_url + url, headers: header);
+      response = await get(baes_url + 'api/' + url, headers: header);
     }
 
     print("Api Request " +

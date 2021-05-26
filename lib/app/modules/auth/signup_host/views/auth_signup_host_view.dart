@@ -63,8 +63,12 @@ class AuthSignupHostView extends GetView<AuthSignupHostController> {
                               .getImage(source: ImageSource.gallery)
                               .then(
                             (value) {
-                              imagepath.value = pickYouImage.selectImagePath;
-                              controller.imageBytes = value;
+                              if (GetUtils.isNullOrBlank(value)) {
+                              } else {
+                                imagepath.value = pickYouImage.selectImagePath;
+                                controller.imageBytes = value;
+                              }
+
                               // onclick(value);
                             },
                           );

@@ -13,7 +13,6 @@ class WebServices extends ApiManger {
     @required String phone,
     @required String password,
   }) async {
-    
     EasyLoading.show(status: 'جارى التحميل');
 
     var formData =
@@ -83,6 +82,7 @@ class WebServices extends ApiManger {
     @required String name,
     @required double price,
     @required String description,
+    @required String imageBytes,
   }) async {
     ResponsModel response = await repPost(
         'Offer/Add',
@@ -90,6 +90,7 @@ class WebServices extends ApiManger {
           "Name": name,
           "Price": price,
           "Description": description,
+          "ImageBytes": imageBytes
         },
         showLoading: true);
     return response;
@@ -118,17 +119,14 @@ class WebServices extends ApiManger {
     return response;
   }
 
-
   Future<ResponsModel> getRequest() async {
     ResponsModel response = await repGet('EventOffer/Get', showLoading: true);
     return response;
   }
 
   Future<ResponsModel> getNotification() async {
-    ResponsModel response = await repGet('Account/Notification', showLoading: true);
+    ResponsModel response =
+        await repGet('Account/Notification', showLoading: true);
     return response;
   }
-
-  
-  
 }

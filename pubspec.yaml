@@ -37,6 +37,7 @@ dependencies:
   flutter_slider_drawer: ^2.0.0
   curved_navigation_bar: ^0.3.7
   intl: ^0.16.1
+  cached_network_image: ^3.0.0
 
   
 dev_dependencies:

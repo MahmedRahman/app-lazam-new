@@ -56,15 +56,22 @@ class AuthSignupFoodProviderView
                           ? AssetImage('images/avater.png')
                           : FileImage(File(imagepath.value)),
                       onPressed: () {
+
+                        
                         PickYouImage pickYouImage = new PickYouImage();
                         pickYouImage.getImage(source: ImageSource.gallery).then(
                           (value) {
-                            imagepath.value = pickYouImage.selectImagePath;
+                            if (GetUtils.isNullOrBlank(value) ) {
+                            } else {
+                              imagepath.value = pickYouImage.selectImagePath;
                               controller.imageBytes = value;
+                            }
 
                             // onclick(value);
                           },
                         );
+
+
                       });
                 }),
                 SizedBox(
@@ -156,10 +163,7 @@ class AuthSignupFoodProviderView
                   buttontext: 'اشترك الأن',
                   onClick: () {
                     if (_formKey.currentState.validate()) {
-                      print(
-                          " ${controller.nameTextController.text.toString()} ${controller.emailTextController.text.toString()} ${controller.phoneTextController.text.toString()}  ${controller.passwordTextController.text.toString()} ");
-                   
-                   controller.accountRegister();
+                      controller.accountRegister();
                     }
                   },
                 ),

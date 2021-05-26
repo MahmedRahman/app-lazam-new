@@ -1,15 +1,19 @@
+import 'dart:io';
+
+import 'package:app_lazam/app/data/ImagePicker.dart';
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/data/component.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../controllers/offer_fb_add_controller.dart';
 
 class OfferFbAddView extends GetView<OfferFbAddController> {
   final _formKey = GlobalKey<FormState>();
-
+  var imagepath = ''.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,45 +45,74 @@ class OfferFbAddView extends GetView<OfferFbAddController> {
               Divider(
                 thickness: 1,
               ),
-             
               SizedBox(
                 height: 10,
               ),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(.3),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
+              Obx(() {
+                return InkWell(
+                  onTap: () {
+                    PickYouImage pickYouImage = new PickYouImage();
+                    pickYouImage.getImage(source: ImageSource.gallery).then(
+                      (value) {
+                        if (GetUtils.isNullOrBlank(value)) {
+                        } else {
+                          imagepath.value = pickYouImage.selectImagePath;
+                          controller.imageBytes = value;
+                        }
+
+                        // onclick(value);
+                      },
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(.3),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    CircleAvatar(
-                      backgroundColor: KprimaryColor.withOpacity(.6),
-                      radius: 50,
-                      child: Icon(
-                        FontAwesomeIcons.plus,
-                        color: Colors.white,
-                      ),
+                    child: Column(
+                      children: [
+                        imagepath.value.isEmpty
+                            ? Column(
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        KprimaryColor.withOpacity(.6),
+                                    radius: 50,
+                                    child: Icon(
+                                      FontAwesomeIcons.plus,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'يمكنك إضافة صورة للعرض',
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(.5),
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              )
+                            : Image(
+                                image: FileImage(
+                                  File(imagepath.value),
+                                ),
+                              
+                              )
+                      ],
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'يمكنك إضافة صورة للعرض',
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(.5),
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              }),
               SizedBox(
                 height: 20,
               ),
@@ -141,12 +174,14 @@ class OfferFbAddView extends GetView<OfferFbAddController> {
                     child: Text(
                       'إنشــاء العـرض',
                     )),
-              )
-           
+              ),
+                 SizedBox(
+                height: 20,
+              ),
+
             ],
           ),
         ),
-      
       ),
     ));
   }

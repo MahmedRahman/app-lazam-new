@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const AppName = 'Lazam';
+
+const baes_url = 'https://lazam.atpnet.net/';
 var selectScreen = 1.obs;
 const KprimaryColor = Color(0xff5EAF6B);
 const KsecondaryColor = Color(0xffF6F6F6);

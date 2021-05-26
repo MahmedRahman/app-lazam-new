@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../controllers/offer_fb_list_controller.dart';
 
@@ -90,8 +91,9 @@ class OfferFbListView extends GetView<OfferFbListController> {
               ),
             ],
           ),
-          Obx(() {
-            return FutureBuilder(
+          Obx(
+            () {
+              return FutureBuilder(
                 future: controller.listOffer.value,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
@@ -118,8 +120,10 @@ class OfferFbListView extends GetView<OfferFbListController> {
                       backgroundColor: KprimaryColor,
                     ),
                   );
-                },);
-          },)
+                },
+              );
+            },
+          )
         ],
       ),
     );
@@ -129,102 +133,119 @@ class OfferFbListView extends GetView<OfferFbListController> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: InkWell(
           onTap: () {
-           
-            Get.toNamed(Routes.OFFER_FB_DETAIL , arguments: [OffersItem]);
+            Get.toNamed(Routes.OFFER_FB_DETAIL, arguments: [OffersItem]);
           },
           child: Card(
             child: Row(
               children: [
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'أسم العرض',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                  flex: 2,
+                  child: Container(
+                    
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 5,
                             ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            OffersItem.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'السعر للشخص الواحد',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              'أسم العرض',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            OffersItem.price.toString().replaceAll('.0', ''),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),SizedBox(width: 5,),
-                          Text(
-                            'رس',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'الحــالة',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                            SizedBox(
+                              width: 5,
                             ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            OfferStatus.values[OffersItem.status].toString(),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                            Expanded(
+                              child: Text(
+                                OffersItem.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.clip,
+                                softWrap: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'السعر للشخص',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              OffersItem.price
+                                  .toString()
+                                  .replaceAll('.0', ''),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'رس',
+                                maxLines: 1,
+                                overflow: TextOverflow.clip,
+                                softWrap: false,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'الحــالة',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                OfferStatus.values[OffersItem.status]
+                                    .toString(),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
-                  child: FlutterLogo(),
+                  width: 5,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Image(
+                    image: CachedNetworkImageProvider(
+                        '${baes_url.toString()}Files/Offer/${OffersItem.image}'),
+                  ),
                 )
               ],
             ),
