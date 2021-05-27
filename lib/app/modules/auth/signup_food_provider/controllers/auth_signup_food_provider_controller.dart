@@ -35,7 +35,7 @@ class AuthSignupFoodProviderController extends GetxController {
       description: descriptionTextController.text,
       cityId: cityid,
       imageBytes: imageBytes.toString(),
-      userType: UserType.FoodProvider.index,
+      userType: Role.FoodProvider.index,
     );
 
     if (responsModel.success) {

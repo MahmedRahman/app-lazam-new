@@ -10,8 +10,6 @@ import 'package:get/get.dart';
 class AuthSplashController extends GetxController {
   //TODO: Implement AuthSplashController
 
-  
-
   @override
   void onInit() {
     super.onInit();
@@ -24,29 +22,36 @@ class AuthSplashController extends GetxController {
   void onReady() async {
     super.onReady();
 
-    ResponsModel UserCityModel = await WebServices().getCity();
-    if (UserCityModel.success) {
-      Response response = UserCityModel.data;
-      userCity = response.body;
+    ResponsModel settingModel = await WebServices().getSetting();
+    if (settingModel.success) {
+
+      Response response = settingModel.data;
+      
+      userCity = response.body['Cities'];
+      KAboutPage = response.body['Setting']['About'];
+      KContactPage = response.body['Setting']['ContactUs'];
+      KPrivacyPage = response.body['Setting']['Privacy'];
+      KtremesPage = response.body['Setting']['Terms'];
+
     }
 
     String userTokan = Get.find<UserAuth>().getUserToken();
 
     if (GetUtils.isNullOrBlank(userTokan)) {
-      //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
-
-      Get.toNamed(Routes.AUTH_INTRODUCTION);
+      Get.offAllNamed(Routes.AUTH_INTRODUCTION);
     } else {
-      ResponsModel responsModel = await WebServices().getProfile();
-
-      if (responsModel.success) {
-        Response response = responsModel.data;
-
-        userModel = userModelFromJson(response.bodyString);
-        Get.toNamed(Routes.AUTH_INTRODUCTION);
-      } else {
-        Get.toNamed(Routes.AUTH_INTRODUCTION);
-      }
+      getProfile().then(
+        (userModel) {
+          if (Role.values[userModel.role] == Role.FoodProvider) {
+            Get.offAllNamed(Routes.LAYOUT_FOOD_PROVIDER);
+          } else if (Role.values[userModel.role] == Role.Host) {
+            Get.offAllNamed(Routes.LAYOUT_HOST);
+          }
+        },
+        onError: (err) {
+          Get.offAllNamed(Routes.AUTH_INTRODUCTION);
+        },
+      );
     }
   }
 

@@ -1,4 +1,6 @@
+import 'package:app_lazam/app/data/app_const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 import 'package:get/get.dart';
 
@@ -7,15 +9,14 @@ class TremesView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                        elevation: 0,
+        elevation: 0,
         backgroundColor: Colors.white,
         title: Text('شروط و احكام'),
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'TremesView is working',
-          style: TextStyle(fontSize: 20),
+        child:  Html(
+          data: KtremesPage,
         ),
       ),
     );

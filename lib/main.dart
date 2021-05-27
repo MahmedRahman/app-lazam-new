@@ -1,4 +1,5 @@
 import 'package:app_lazam/app/api/auth.dart';
+import 'package:app_lazam/app/data/AppTranslation.dart';
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -6,7 +7,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 import 'package:get_storage/get_storage.dart';
 
-void main() async {   
+void main() async {
   await GetStorage.init();
   await Get.putAsync<UserAuth>(() async => await UserAuth());
   runApp(
@@ -27,6 +28,9 @@ void main() async {
         ),
       ),
       initialRoute: AppPages.INITIAL,
+      locale: Locale('ar', 'EG'),
+      fallbackLocale: Locale('ar', 'EG'),
+      translations: AppTranslation(),
       getPages: AppPages.routes,
       builder: EasyLoading.init(),
     ),

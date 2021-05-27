@@ -29,6 +29,8 @@ class UserModel {
         this.offers,
         this.logoBytes,
         this.role,
+        this.cityId,
+        this.cityName,
     });
 
     String id;
@@ -50,6 +52,8 @@ class UserModel {
     dynamic offers;
     dynamic logoBytes;
     int role;
+    int cityId;
+    String cityName;
 
     factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["Id"],
@@ -71,6 +75,8 @@ class UserModel {
         offers: json["Offers"],
         logoBytes: json["LogoBytes"],
         role: json["Role"],
+        cityId: json["CityId"],
+        cityName: json["CityName"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -93,5 +99,7 @@ class UserModel {
         "Offers": offers,
         "LogoBytes": logoBytes,
         "Role": role,
+        "CityId": cityId,
+        "CityName": cityName,
     };
 }

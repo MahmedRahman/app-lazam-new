@@ -67,7 +67,7 @@ class RequestDetailView extends GetView<RequestDetailController> {
                         ),
                         Text(
                           OfferStatus.values[controller.requestItem.status]
-                              .toString(),
+                              .toString().tr,
                           style: TextStyle(
                             fontSize: 10,
                             color: KprimaryColor,

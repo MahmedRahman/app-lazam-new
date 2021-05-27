@@ -27,7 +27,8 @@ class OfferFbDetailController extends GetxController {
           'تم التعديل بنجاح',
           snackbarStatus: (SnackbarStatus status) {
             if (status == SnackbarStatus.CLOSED) {
-         
+              OfferFbListController controller = Get.find();
+              controller.getOffers();
               Get.offAndToNamed(Routes.LAYOUT_FOOD_PROVIDER);
             }
           },
@@ -39,7 +40,5 @@ class OfferFbDetailController extends GetxController {
   }
 
   @override
-  void onClose() {
-  }
-  
+  void onClose() {}
 }

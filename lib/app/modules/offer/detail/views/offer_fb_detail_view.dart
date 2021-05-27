@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app_lazam/app/data/ImagePicker.dart';
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/routes/app_pages.dart';
@@ -16,6 +18,7 @@ class OfferFbDetailView extends GetView<OfferFbDetailController> {
   var imagepath = ''.obs;
   @override
   Widget build(BuildContext context) {
+    print(controller.offersModel.image);
     return Scaffold(
       backgroundColor: KsecondaryColor,
       body: SafeArea(
@@ -57,29 +60,43 @@ class OfferFbDetailView extends GetView<OfferFbDetailController> {
                     padding: const EdgeInsets.symmetric(
                       vertical: 15,
                     ),
-                    child: Row(
+                    child: Column(
                       children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'حـالة',
-                          style: TextStyle(
-                            color: KprimaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            'فعـال',
-                            style: TextStyle(
-                              color: Colors.black,
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
+                            Text(
+                              'حـالة',
+                              style: TextStyle(
+                                color: KprimaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                OfferStatus
+                                    .values[controller.offersModel.status]
+                                    .toString()
+                                    .tr,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
+                        SwitchListTile(
+                          value: true,
+                          onChanged: (value) {},
+                          title: Text(
+                              'حالة ${controller.offersModel.status.toString()}'),
+                        )
                       ],
                     ),
                   ),
@@ -95,51 +112,75 @@ class OfferFbDetailView extends GetView<OfferFbDetailController> {
                         if (GetUtils.isNullOrBlank(value)) {
                         } else {
                           imagepath.value = pickYouImage.selectImagePath;
-                          controller.offersModel.image = value;
+                          controller.offersModel.imageBytes = value;
                         }
-
                       },
                     );
                   },
                   child: Container(
+                    height: 200,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(.3),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: GetUtils.isNullOrBlank(controller.offersModel.image)
-                        ? Column(
-                            children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              CircleAvatar(
-                                backgroundColor: KprimaryColor.withOpacity(.6),
-                                radius: 50,
-                                child: Icon(
-                                  FontAwesomeIcons.plus,
-                                  color: Colors.white,
+                    child: GetUtils.isNullOrBlank(
+                            controller.offersModel.image)
+                        ? Obx(() {
+                            if (GetUtils.isNullOrBlank(imagepath.value)) {
+                              return Column(
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        KprimaryColor.withOpacity(.6),
+                                    radius: 50,
+                                    child: Icon(
+                                      FontAwesomeIcons.plus,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'يمكنك إضافة صورة للعرض',
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(.5),
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Image(
+                                image: FileImage(
+                                  File(imagepath.value),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'يمكنك إضافة صورة للعرض',
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(.5),
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          )
-                        : Image(
-                            image: CachedNetworkImageProvider(
-                              '${baes_url.toString()}Files/Offer/${controller.offersModel.image}',
-                            ),
+                              );
+                            }
+                          })
+                        : Obx(
+                            () {
+                              if (GetUtils.isNullOrBlank(imagepath.value)) {
+                                return Image(
+                                  image: CachedNetworkImageProvider(
+                                    '${baes_url.toString()}Files/Offer/${controller.offersModel.image}',
+                                  ),
+                                );
+                              } else {
+                                return Image(
+                                  image: FileImage(
+                                    File(imagepath.value),
+                                  ),
+                                );
+                              }
+                            },
                           ),
                   ),
                 ),

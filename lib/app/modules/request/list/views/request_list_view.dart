@@ -1,3 +1,4 @@
+import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/modules/request/list/model/request_model.dart';
 import 'package:app_lazam/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -78,12 +79,14 @@ class RequestListView extends GetView<RequestListController> {
                 ),
               ],
             ),
-            Obx(() {
-              return FutureBuilder(
+            Obx(
+              () {
+                return FutureBuilder(
                   future: controller.listRequestModel.value,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       List<RequestModel> requestModel = snapshot.data;
+
                       if (requestModel.length == 0) {
                         return Center(
                           child: Text('لا يوجود بيانات'),
@@ -101,12 +104,13 @@ class RequestListView extends GetView<RequestListController> {
                         );
                       }
                     }
-
                     return Center(
                       child: CircularProgressIndicator(),
                     );
-                  });
-            })
+                  },
+                );
+              },
+            )
           ],
         ),
       ),
@@ -123,6 +127,7 @@ class RequestListView extends GetView<RequestListController> {
             child: Row(
               children: [
                 Expanded(
+                  flex: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,10 +149,12 @@ class RequestListView extends GetView<RequestListController> {
                           SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            requestModel.offerName,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          Expanded(
+                            child: Text(
+                              requestModel.offerName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ],
                       ),
@@ -168,12 +175,14 @@ class RequestListView extends GetView<RequestListController> {
                           SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            DateFormat.yMMMd()
-                                .format(requestModel.date)
-                                .toString(),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          Expanded(
+                            child: Text(
+                              DateFormat.yMMMd()
+                                  .format(requestModel.date)
+                                  .toString(),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           )
                         ],
                       ),
@@ -207,6 +216,29 @@ class RequestListView extends GetView<RequestListController> {
                     ],
                   ),
                 ),
+                Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(FontAwesomeIcons.check),
+                          onPressed: () {
+                            controller.requestAccept(requestModel.id);
+                            requestModel.status = OfferStatus.Accept.index;
+                          },
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        IconButton(
+                          icon: Icon(FontAwesomeIcons.times),
+                          onPressed: () {
+                            controller.requestReject(requestModel.id);
+                             requestModel.status = OfferStatus.Reject.index;
+                          },
+                        )
+                      ],
+                    ))
               ],
             ),
           ),

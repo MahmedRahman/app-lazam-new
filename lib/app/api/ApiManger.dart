@@ -7,7 +7,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/connect.dart';
 
-
 class ApiManger extends GetConnect {
   var header = {
     'Authorization': 'Bearer ',
@@ -33,12 +32,14 @@ class ApiManger extends GetConnect {
       EasyLoading.show(status: 'جارى التحميل');
     }
 
-    print("Api Request " + baes_url + url);
+    print("Api Request " + baes_url + 'api/' + url);
 
     login();
 
-    Response response = await post(baes_url + 'api/' + url, body, headers: header);
+    Response response =
+        await post(baes_url + 'api/' + url, body, headers: header);
 
+    print("Api Request " + baes_url + 'api/' + url);
     try {
       switch (response.statusCode) {
         case 200:
@@ -96,7 +97,7 @@ class ApiManger extends GetConnect {
 
     login();
 
-    print("Api Request " + baes_url + url);
+    print("Api Request " + baes_url + 'api/' + url);
 
     Response response;
 

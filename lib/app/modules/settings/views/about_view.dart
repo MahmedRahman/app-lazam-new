@@ -1,4 +1,6 @@
+import 'package:app_lazam/app/data/app_const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 import 'package:get/get.dart';
 
@@ -13,11 +15,9 @@ class AboutView extends GetView {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'AboutView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+          child: Html(
+        data: KAboutPage,
+      )),
     );
   }
 }

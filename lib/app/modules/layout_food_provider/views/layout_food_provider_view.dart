@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_lazam/app/api/auth.dart';
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/modules/notifaction/views/notifaction_view.dart';
 import 'package:app_lazam/app/modules/offer/list/views/offer_fb_list_view.dart';
@@ -140,6 +141,10 @@ class LayoutFoodProviderView extends GetView<LayoutFoodProviderController> {
                 title: Text('الاشعارات'),
               ),
               ListTile(
+                onTap: (){
+                  Get.find<UserAuth>().setUserToken(null);
+                  Get.offAllNamed(Routes.AUTH_USER_DIRECTION);
+                },
                 dense: true,
                 leading: Icon(FontAwesomeIcons.signOutAlt),
                 title: Text('تسجيـل الخـروج'),

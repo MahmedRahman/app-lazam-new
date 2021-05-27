@@ -42,7 +42,9 @@ class OfferFbListView extends GetView<OfferFbListController> {
                   ),
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        selectScreen.value = 0;
+                      },
                       icon: Icon(FontAwesomeIcons.utensils),
                       label: Text('عروض مختارة'),
                     ),
@@ -141,7 +143,6 @@ class OfferFbListView extends GetView<OfferFbListController> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -182,16 +183,13 @@ class OfferFbListView extends GetView<OfferFbListController> {
                             ),
                             Text(
                               'السعر للشخص',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               width: 5,
                             ),
                             Text(
-                              OffersItem.price
-                                  .toString()
-                                  .replaceAll('.0', ''),
+                              OffersItem.price.toString().replaceAll('.0', ''),
                             ),
                             Expanded(
                               child: Text(
@@ -223,7 +221,8 @@ class OfferFbListView extends GetView<OfferFbListController> {
                             Expanded(
                               child: Text(
                                 OfferStatus.values[OffersItem.status]
-                                    .toString(),
+                                    .toString()
+                                    .tr,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -243,8 +242,10 @@ class OfferFbListView extends GetView<OfferFbListController> {
                 Expanded(
                   flex: 1,
                   child: Image(
+                    height: 100,
                     image: CachedNetworkImageProvider(
-                        '${baes_url.toString()}Files/Offer/${OffersItem.image}'),
+                      '${baes_url.toString()}Files/Offer/${OffersItem.image}',
+                    ),
                   ),
                 )
               ],

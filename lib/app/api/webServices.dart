@@ -36,13 +36,13 @@ class WebServices extends ApiManger {
     );
   }
 
-  Future<ResponsModel> getCity() async {
-    ResponsModel response = await repGet('City/Get');
+  Future<ResponsModel> getSetting() async {
+    ResponsModel response = await repGet('Setting/FullGet');
     return response;
   }
 
   Future<ResponsModel> getProfile() async {
-    ResponsModel response = await repGet('Account/Profile');
+    ResponsModel response = await repGet('Account/GetProfile?userId=');
     return response;
   }
 
@@ -127,6 +127,20 @@ class WebServices extends ApiManger {
   Future<ResponsModel> getNotification() async {
     ResponsModel response =
         await repGet('Account/Notification', showLoading: true);
+    return response;
+  }
+
+  Future<ResponsModel> requestAccept({@required requestid}) async {
+    ResponsModel response = await repPost(
+        'EventOffer/Accept/${requestid.toString()}', '',
+        showLoading: true);
+    return response;
+  }
+
+  Future<ResponsModel> requestReject({@required requestid}) async {
+    ResponsModel response = await repPost(
+        'EventOffer/Reject/${requestid.toString()}', '',
+        showLoading: true);
     return response;
   }
 }

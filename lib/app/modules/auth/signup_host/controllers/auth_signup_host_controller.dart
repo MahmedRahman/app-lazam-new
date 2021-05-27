@@ -28,7 +28,7 @@ class AuthSignupHostController extends GetxController {
       password: passwordTextController.text,
       cityId: cityid,
       imageBytes: imageBytes.toString(),
-      userType: UserType.Host.index,
+      userType: Role.Host.index,
     );
 
     if (responsModel.success) {
