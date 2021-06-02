@@ -49,12 +49,12 @@ class LayoutFoodProviderView extends GetView<LayoutFoodProviderController> {
                 height: 20,
               ),
               ListTile(
-                title: Text('محمد عبد الرحمن'),
-                subtitle: Text('atp2020@outlook.com'),
+                title: Text(userModel.userName),
+                subtitle: Text(userModel.email),
                 leading: CircleAvatar(
                   backgroundColor: KprimaryColor,
                   child: Text(
-                    'M',
+                    'F',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -134,6 +134,7 @@ class LayoutFoodProviderView extends GetView<LayoutFoodProviderController> {
               Divider(),
               ListTile(
                 onTap: () {
+                  Get.back();
                   Get.toNamed(Routes.NOTIFACTION);
                 },
                 dense: true,
@@ -219,4 +220,7 @@ class LayoutFoodProviderView extends GetView<LayoutFoodProviderController> {
       }),
     );
   }
+
+
+
 }

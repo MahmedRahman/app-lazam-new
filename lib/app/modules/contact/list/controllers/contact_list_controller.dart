@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class ProfileEvantMackerController extends GetxController {
-  //TODO: Implement ProfileEvantMackerController
+class ContactListController extends GetxController {
+  //TODO: Implement ContactListController
 
   final count = 0.obs;
   @override

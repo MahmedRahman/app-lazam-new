@@ -26,6 +26,15 @@ abstract class Routes {
   static const PROFILE_EVANT_MACKER = _Paths.PROFILE_EVANT_MACKER;
   static const NOTIFACTION = _Paths.NOTIFACTION;
   static const SETTINGS = _Paths.SETTINGS;
+  static const CONTACT = _Paths.CONTACT;
+  static const CONTACTGROUP_LIST = _Paths.CONTACTGROUP_LIST;
+  static const CONTACTGROUP_ADD = _Paths.CONTACTGROUP_ADD;
+  static const CONTACT_LIST = _Paths.CONTACT_LIST;
+  static const CONTACT_ADD = _Paths.CONTACT_ADD;
+  static const PROFILE_EVENT_MACKER_VIEW = _Paths.PROFILE_EVENT_MACKER_VIEW;
+  static const PROFILE_EVENT_MACKER_EDIT = _Paths.PROFILE_EVENT_MACKER_EDIT;
+  static const PROFILE_FOOD_PROVIDER_EDIT = _Paths.PROFILE_FOOD_PROVIDER_EDIT;
+  static const PROFILE_FOOD_PROVIDER_VIEW = _Paths.PROFILE_FOOD_PROVIDER_VIEW;
 }
 
 abstract class _Paths {
@@ -53,4 +62,13 @@ abstract class _Paths {
   static const PROFILE_EVANT_MACKER = '/profile-evant-macker';
   static const NOTIFACTION = '/notifaction';
   static const SETTINGS = '/settings';
+  static const CONTACT = '/contact';
+  static const CONTACTGROUP_LIST = '/list';
+  static const CONTACTGROUP_ADD = '/add';
+  static const CONTACT_LIST = '/list';
+  static const CONTACT_ADD = '/ContactAddView';
+  static const PROFILE_EVENT_MACKER_VIEW = '/view';
+  static const PROFILE_EVENT_MACKER_EDIT = '/edit';
+  static const PROFILE_FOOD_PROVIDER_EDIT = '/edit';
+  static const PROFILE_FOOD_PROVIDER_VIEW = '/view';
 }

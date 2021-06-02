@@ -3,11 +3,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/profile_evant_macker_controller.dart';
+import '../controllers/profile_event_macker_view_controller.dart';
 
-class ProfileEvantMackerView extends GetView<ProfileEvantMackerController> {
+class ProfileEventMackerViewView
+    extends GetView<ProfileEventMackerViewController> {
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -80,5 +82,7 @@ class ProfileEvantMackerView extends GetView<ProfileEvantMackerController> {
         ),
       ),
     );
+ 
+
   }
 }

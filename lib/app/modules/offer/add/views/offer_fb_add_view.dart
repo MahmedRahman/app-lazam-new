@@ -16,6 +16,8 @@ class OfferFbAddView extends GetView<OfferFbAddController> {
   var imagepath = ''.obs;
   @override
   Widget build(BuildContext context) {
+  
+  
     return Scaffold(
         body: SafeArea(
       child: Form(
@@ -106,7 +108,6 @@ class OfferFbAddView extends GetView<OfferFbAddController> {
                                 image: FileImage(
                                   File(imagepath.value),
                                 ),
-                              
                               )
                       ],
                     ),
@@ -175,14 +176,15 @@ class OfferFbAddView extends GetView<OfferFbAddController> {
                       'إنشــاء العـرض',
                     )),
               ),
-                 SizedBox(
+              SizedBox(
                 height: 20,
               ),
-
             ],
           ),
         ),
       ),
     ));
+ 
+ 
   }
 }

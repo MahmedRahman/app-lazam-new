@@ -1,9 +1,5 @@
-import 'package:app_lazam/app/modules/request/request_history/bindings/offer_fb_request_history_binding.dart';
-import 'package:app_lazam/app/modules/request/request_history/views/offer_fb_request_history_view.dart';
 import 'package:get/get.dart';
 
-import 'package:app_lazam/app/modules/Profile_evant_macker/bindings/profile_evant_macker_binding.dart';
-import 'package:app_lazam/app/modules/Profile_evant_macker/views/profile_evant_macker_view.dart';
 import 'package:app_lazam/app/modules/auth/forget_password/bindings/auth_forget_password_binding.dart';
 import 'package:app_lazam/app/modules/auth/forget_password/views/auth_forget_password_view.dart';
 import 'package:app_lazam/app/modules/auth/introduction/bindings/auth_introduction_binding.dart';
@@ -18,6 +14,14 @@ import 'package:app_lazam/app/modules/auth/splash/bindings/auth_splash_binding.d
 import 'package:app_lazam/app/modules/auth/splash/views/auth_splash_view.dart';
 import 'package:app_lazam/app/modules/auth/user_direction/bindings/auth_user_direction_binding.dart';
 import 'package:app_lazam/app/modules/auth/user_direction/views/auth_user_direction_view.dart';
+import 'package:app_lazam/app/modules/contact/add/bindings/contact_add_binding.dart';
+import 'package:app_lazam/app/modules/contact/add/views/contact_add_view.dart';
+import 'package:app_lazam/app/modules/contact/list/bindings/contact_list_binding.dart';
+import 'package:app_lazam/app/modules/contact/list/views/contact_list_view.dart';
+import 'package:app_lazam/app/modules/contactgroup/add/bindings/contactgroup_add_binding.dart';
+import 'package:app_lazam/app/modules/contactgroup/add/views/contactgroup_add_view.dart';
+import 'package:app_lazam/app/modules/contactgroup/list/bindings/contactgroup_list_binding.dart';
+import 'package:app_lazam/app/modules/contactgroup/list/views/contactgroup_list_view.dart';
 import 'package:app_lazam/app/modules/home/bindings/home_binding.dart';
 import 'package:app_lazam/app/modules/home/views/home_view.dart';
 import 'package:app_lazam/app/modules/layout_food_provider/bindings/layout_food_provider_binding.dart';
@@ -32,12 +36,22 @@ import 'package:app_lazam/app/modules/offer/detail/bindings/offer_fb_detail_bind
 import 'package:app_lazam/app/modules/offer/detail/views/offer_fb_detail_view.dart';
 import 'package:app_lazam/app/modules/offer/list/bindings/offer_fb_list_binding.dart';
 import 'package:app_lazam/app/modules/offer/list/views/offer_fb_list_view.dart';
+import 'package:app_lazam/app/modules/profile_event_macker/edit/bindings/profile_event_macker_edit_binding.dart';
+import 'package:app_lazam/app/modules/profile_event_macker/edit/views/profile_event_macker_edit_view.dart';
+import 'package:app_lazam/app/modules/profile_event_macker/view/bindings/profile_event_macker_view_binding.dart';
+import 'package:app_lazam/app/modules/profile_event_macker/view/views/profile_event_macker_view_view.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/bindings/profile_food_provider_binding.dart';
+import 'package:app_lazam/app/modules/profile_food_provider/edit/bindings/profile_food_provider_edit_binding.dart';
+import 'package:app_lazam/app/modules/profile_food_provider/edit/views/profile_food_provider_edit_view.dart';
+import 'package:app_lazam/app/modules/profile_food_provider/view/bindings/profile_food_provider_view_binding.dart';
+import 'package:app_lazam/app/modules/profile_food_provider/view/views/profile_food_provider_view_view.dart';
 import 'package:app_lazam/app/modules/profile_food_provider/views/profile_food_provider_view.dart';
 import 'package:app_lazam/app/modules/request/detail/bindings/request_detail_binding.dart';
 import 'package:app_lazam/app/modules/request/detail/views/request_detail_view.dart';
 import 'package:app_lazam/app/modules/request/list/bindings/request_list_binding.dart';
 import 'package:app_lazam/app/modules/request/list/views/request_list_view.dart';
+import 'package:app_lazam/app/modules/request/request_history/bindings/offer_fb_request_history_binding.dart';
+import 'package:app_lazam/app/modules/request/request_history/views/offer_fb_request_history_view.dart';
 import 'package:app_lazam/app/modules/settings/bindings/settings_binding.dart';
 import 'package:app_lazam/app/modules/settings/views/settings_view.dart';
 
@@ -96,6 +110,17 @@ class AppPages {
       name: _Paths.PROFILE_FOOD_PROVIDER,
       page: () => ProfileFoodProviderView(),
       binding: ProfileFoodProviderBinding(),
+      children: [],
+    ),
+    GetPage(
+      name: _Paths.PROFILE_FOOD_PROVIDER_EDIT,
+      page: () => ProfileFoodProviderEditView(),
+      binding: ProfileFoodProviderEditBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_FOOD_PROVIDER_VIEW,
+      page: () => ProfileFoodProviderViewView(),
+      binding: ProfileFoodProviderViewBinding(),
     ),
     GetPage(
       name: _Paths.LAYOUT_HOST,
@@ -132,11 +157,7 @@ class AppPages {
       page: () => RequestDetailView(),
       binding: RequestDetailBinding(),
     ),
-    GetPage(
-      name: _Paths.PROFILE_EVANT_MACKER,
-      page: () => ProfileEvantMackerView(),
-      binding: ProfileEvantMackerBinding(),
-    ),
+
     GetPage(
       name: _Paths.NOTIFACTION,
       page: () => NotifactionView(),
@@ -146,6 +167,36 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT_LIST,
+      page: () => ContactListView(),
+      binding: ContactListBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT_ADD,
+      page: () => ContactAddView(),
+      binding: ContactAddBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACTGROUP_LIST,
+      page: () => ContactgroupListView(),
+      binding: ContactgroupListBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACTGROUP_ADD,
+      page: () => ContactgroupAddView(),
+      binding: ContactgroupAddBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_EVENT_MACKER_VIEW,
+      page: () => ProfileEventMackerViewView(),
+      binding: ProfileEventMackerViewBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_EVENT_MACKER_EDIT,
+      page: () => ProfileEventMackerEditView(),
+      binding: ProfileEventMackerEditBinding(),
     ),
   ];
 }

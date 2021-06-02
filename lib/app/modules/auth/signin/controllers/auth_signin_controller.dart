@@ -15,7 +15,7 @@ class AuthSigninController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    phoneTextController.text = "01113403049";
+    phoneTextController.text = "010";
     passwordTextController.text = "123456";
   }
 
@@ -32,7 +32,6 @@ class AuthSigninController extends GetxController {
       getProfile().then(
         (userModel) {
           if (Role.values[userModel.role] == Role.FoodProvider) {
-
             if (UserStatus.values[userModel.status] == UserStatus.Active) {
               Get.offAllNamed(Routes.LAYOUT_FOOD_PROVIDER);
             } else {
@@ -47,8 +46,6 @@ class AuthSigninController extends GetxController {
                 ),
               );
             }
-
-            
           } else if (Role.values[userModel.role] == Role.Host) {
             Get.offAllNamed(Routes.LAYOUT_HOST);
           }
