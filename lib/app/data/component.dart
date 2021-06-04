@@ -124,6 +124,7 @@ Widget defaultDropdown({
   Function validator,
 }) =>
     Container(
+      height: 60,
       decoration: BoxDecoration(
         color: Color(0xffECECEC),
         borderRadius: BorderRadius.circular(10),
@@ -131,9 +132,10 @@ Widget defaultDropdown({
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: ButtonTheme(
+          height: 60,
           alignedDropdown: true,
           child: DropdownButtonFormField(
-            
+         
             validator:validator,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(

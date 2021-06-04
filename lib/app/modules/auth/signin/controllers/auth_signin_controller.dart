@@ -15,7 +15,7 @@ class AuthSigninController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    phoneTextController.text = "010";
+    phoneTextController.text = "01002089079";
     passwordTextController.text = "123456";
   }
 

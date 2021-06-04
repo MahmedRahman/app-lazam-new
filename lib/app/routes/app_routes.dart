@@ -35,6 +35,16 @@ abstract class Routes {
   static const PROFILE_EVENT_MACKER_EDIT = _Paths.PROFILE_EVENT_MACKER_EDIT;
   static const PROFILE_FOOD_PROVIDER_EDIT = _Paths.PROFILE_FOOD_PROVIDER_EDIT;
   static const PROFILE_FOOD_PROVIDER_VIEW = _Paths.PROFILE_FOOD_PROVIDER_VIEW;
+  static const CONTACTHOME = _Paths.CONTACTHOME;
+  static const EVENT_ADD = _Paths.EVENT_ADD;
+  static const EVENT_LIST = _Paths.EVENT_LIST;
+  static const OFFER_HOST_LIST = _Paths.OFFER_HOST_LIST;
+  static const OFFER_HOST_DETAIL = _Paths.OFFER_HOST_DETAIL;
+  static const OFFER_HOST_ORDER = _Paths.OFFER_HOST_ORDER;
+  static const OFFER_HOST_PROVIDER_LIST =
+      _Paths.OFFER_HOST_PROVIDER_LIST;
+  static const OFFER_HOST_PROVIDER_DETAIL =
+      _Paths.OFFER_HOST_PROVIDER_DETAIL;
 }
 
 abstract class _Paths {
@@ -64,11 +74,19 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const CONTACT = '/contact';
   static const CONTACTGROUP_LIST = '/list';
-  static const CONTACTGROUP_ADD = '/add';
+  static const CONTACTGROUP_ADD = '/ContactgroupAddView';
   static const CONTACT_LIST = '/list';
   static const CONTACT_ADD = '/ContactAddView';
   static const PROFILE_EVENT_MACKER_VIEW = '/view';
   static const PROFILE_EVENT_MACKER_EDIT = '/edit';
   static const PROFILE_FOOD_PROVIDER_EDIT = '/edit';
   static const PROFILE_FOOD_PROVIDER_VIEW = '/view';
+  static const CONTACTHOME = '/contacthome';
+  static const EVENT_ADD = '/EventAddView';
+  static const EVENT_LIST = '/EventListView';
+  static const OFFER_HOST_LIST = '/OfferHostListView';
+  static const OFFER_HOST_DETAIL = '/OfferHostDetailView';
+  static const OFFER_HOST_ORDER = '/OfferHostOrderView';
+  static const OFFER_HOST_PROVIDER_LIST = '/OfferHostProviderListView';
+  static const OFFER_HOST_PROVIDER_DETAIL = '/OfferHostProviderDetailView';
 }

@@ -1,6 +1,8 @@
 import 'package:app_lazam/app/api/auth.dart';
 import 'package:app_lazam/app/data/app_const.dart';
 import 'package:app_lazam/app/modules/contact/list/views/contact_list_view.dart';
+import 'package:app_lazam/app/modules/contacthome/views/contacthome_view.dart';
+import 'package:app_lazam/app/modules/event/list/views/event_list_view.dart';
 import 'package:app_lazam/app/modules/settings/views/about_view.dart';
 import 'package:app_lazam/app/modules/settings/views/contactus_view.dart';
 import 'package:app_lazam/app/modules/settings/views/privacy_view.dart';
@@ -17,15 +19,14 @@ import 'package:get/get.dart';
 import '../controllers/layout_host_controller.dart';
 
 class LayoutHostView extends GetView<LayoutHostController> {
-
-
   GlobalKey<SliderMenuContainerState> _key =
       new GlobalKey<SliderMenuContainerState>();
 
-  List<Widget> Screen = [
-
+  List<Widget> screen = [
+      EventListView(),
+    ContacthomeView(),
+  
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,6 @@ class LayoutHostView extends GetView<LayoutHostController> {
           appBarColor: KprimaryColor,
           slideDirection: SlideDirection.RIGHT_TO_LEFT,
           isDraggable: false,
-
           hasAppBar: false,
           key: _key,
           sliderMenu: Column(
@@ -137,7 +137,7 @@ class LayoutHostView extends GetView<LayoutHostController> {
                 title: Text('الاشعارات'),
               ),
               ListTile(
-                onTap: (){
+                onTap: () {
                   Get.find<UserAuth>().setUserToken(null);
                   Get.offAllNamed(Routes.AUTH_USER_DIRECTION);
                 },
@@ -176,7 +176,7 @@ class LayoutHostView extends GetView<LayoutHostController> {
                 )
               ],
             ),
-            body: ContactListView(),
+            body: screen[0],
             bottomNavigationBar: CurvedNavigationBar(
               backgroundColor: KsecondaryColor,
               buttonBackgroundColor: KprimaryColor,
@@ -215,8 +215,4 @@ class LayoutHostView extends GetView<LayoutHostController> {
       }),
     );
   }
-
-
-
-
 }

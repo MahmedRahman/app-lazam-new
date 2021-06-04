@@ -5,9 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/contact_add_controller.dart';
+import '../controllers/event_add_controller.dart';
 
-class ContactAddView extends GetView<ContactAddController> {
+class EventAddView extends GetView<EventAddController> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ContactAddView extends GetView<ContactAddController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'إنشـاء جهة اتصـال',
+                      'إنشاء مناسبة جديدة',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     IconButton(
@@ -41,12 +41,54 @@ class ContactAddView extends GetView<ContactAddController> {
                   thickness: 1,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: KprimaryColor.withOpacity(.6),
+                      radius: 50,
+                      child: Icon(
+                        FontAwesomeIcons.plus,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'يمكنك إضافة صورة للايفانت',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(.5),
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'اسم المناسبة',
+                    labelText: 'اسم المناسبة',
+                  ),
+                  validator: (String v) =>
+                      v.isNotEmpty ? null : 'مينفعش تسيب هنا فاضى',
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 defaultDropdown(
-                  onChanged: (index) {
-                    //controller.cityid = index;
-                  },
+                  onChanged: (index) {},
                   validator: (int v) {
                     if (v == null) {
                       return 'برجاء اختيار المدينة المناسبة';
@@ -54,7 +96,7 @@ class ContactAddView extends GetView<ContactAddController> {
                       return null;
                     }
                   },
-                  texthint: 'قائمة الاتصال',
+                  texthint: 'أختيار الفئة',
                   items: List.generate(
                     userCity.length,
                     (index) => DropdownMenuItem(
@@ -67,26 +109,11 @@ class ContactAddView extends GetView<ContactAddController> {
                   height: 20,
                 ),
                 TextFormField(
-                  keyboardType: TextInputType.text,
-                  controller: controller.name,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'اسم الشخص',
-                    labelText: 'اسم الشخص',
-                  ),
-                  validator: (String v) =>
-                      v.isNotEmpty ? null : 'مينفعش تسيب هنا فاضى',
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
                   keyboardType: TextInputType.number,
-                  controller: controller.phone,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'رقم الجوال',
-                    labelText: 'رقم الجوال',
+                    hintText: 'التـاريخ',
+                    labelText: 'التـاريخ',
                   ),
                   validator: (String v) =>
                       v.isPhoneNumber ? null : 'مينفعش تسيب هنا فاضى',
@@ -94,16 +121,23 @@ class ContactAddView extends GetView<ContactAddController> {
                 SizedBox(
                   height: 20,
                 ),
-                TextFormField(
-                  controller: controller.email,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'البريد الالكترونى',
-                    labelText: 'البريد الالكترونى',
+                defaultDropdown(
+                  onChanged: (index) {},
+                  validator: (int v) {
+                    if (v == null) {
+                      return 'برجاء اختيار المدينة المناسبة';
+                    } else {
+                      return null;
+                    }
+                  },
+                  texthint: 'أختيار قائمة الاتصال',
+                  items: List.generate(
+                    userCity.length,
+                    (index) => DropdownMenuItem(
+                      value: userCity.elementAt(index)['Id'],
+                      child: Text('${userCity.elementAt(index)['Name']}'),
+                    ),
                   ),
-                  validator: (String v) =>
-                      v.isEmail ? null : 'مينفعش تسيب هنا فاضى',
                 ),
                 SizedBox(
                   height: 20,

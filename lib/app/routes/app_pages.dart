@@ -22,6 +22,12 @@ import 'package:app_lazam/app/modules/contactgroup/add/bindings/contactgroup_add
 import 'package:app_lazam/app/modules/contactgroup/add/views/contactgroup_add_view.dart';
 import 'package:app_lazam/app/modules/contactgroup/list/bindings/contactgroup_list_binding.dart';
 import 'package:app_lazam/app/modules/contactgroup/list/views/contactgroup_list_view.dart';
+import 'package:app_lazam/app/modules/contacthome/bindings/contacthome_binding.dart';
+import 'package:app_lazam/app/modules/contacthome/views/contacthome_view.dart';
+import 'package:app_lazam/app/modules/event/add/bindings/event_add_binding.dart';
+import 'package:app_lazam/app/modules/event/add/views/event_add_view.dart';
+import 'package:app_lazam/app/modules/event/list/bindings/event_list_binding.dart';
+import 'package:app_lazam/app/modules/event/list/views/event_list_view.dart';
 import 'package:app_lazam/app/modules/home/bindings/home_binding.dart';
 import 'package:app_lazam/app/modules/home/views/home_view.dart';
 import 'package:app_lazam/app/modules/layout_food_provider/bindings/layout_food_provider_binding.dart';
@@ -36,6 +42,16 @@ import 'package:app_lazam/app/modules/offer/detail/bindings/offer_fb_detail_bind
 import 'package:app_lazam/app/modules/offer/detail/views/offer_fb_detail_view.dart';
 import 'package:app_lazam/app/modules/offer/list/bindings/offer_fb_list_binding.dart';
 import 'package:app_lazam/app/modules/offer/list/views/offer_fb_list_view.dart';
+import 'package:app_lazam/app/modules/offer_host/detail/bindings/offer_host_detail_binding.dart';
+import 'package:app_lazam/app/modules/offer_host/detail/views/offer_host_detail_view.dart';
+import 'package:app_lazam/app/modules/offer_host/list/bindings/offer_host_list_binding.dart';
+import 'package:app_lazam/app/modules/offer_host/list/views/offer_host_list_view.dart';
+import 'package:app_lazam/app/modules/offer_host/order/bindings/offer_host_order_binding.dart';
+import 'package:app_lazam/app/modules/offer_host/order/views/offer_host_order_view.dart';
+import 'package:app_lazam/app/modules/offer_host/provider/detail/bindings/offer_host_provider_detail_binding.dart';
+import 'package:app_lazam/app/modules/offer_host/provider/detail/views/offer_host_provider_detail_view.dart';
+import 'package:app_lazam/app/modules/offer_host/provider/list/bindings/offer_host_provider_list_binding.dart';
+import 'package:app_lazam/app/modules/offer_host/provider/list/views/offer_host_provider_list_view.dart';
 import 'package:app_lazam/app/modules/profile_event_macker/edit/bindings/profile_event_macker_edit_binding.dart';
 import 'package:app_lazam/app/modules/profile_event_macker/edit/views/profile_event_macker_edit_view.dart';
 import 'package:app_lazam/app/modules/profile_event_macker/view/bindings/profile_event_macker_view_binding.dart';
@@ -157,7 +173,6 @@ class AppPages {
       page: () => RequestDetailView(),
       binding: RequestDetailBinding(),
     ),
-
     GetPage(
       name: _Paths.NOTIFACTION,
       page: () => NotifactionView(),
@@ -197,6 +212,46 @@ class AppPages {
       name: _Paths.PROFILE_EVENT_MACKER_EDIT,
       page: () => ProfileEventMackerEditView(),
       binding: ProfileEventMackerEditBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACTHOME,
+      page: () => ContacthomeView(),
+      binding: ContacthomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVENT_ADD,
+      page: () => EventAddView(),
+      binding: EventAddBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVENT_LIST,
+      page: () => EventListView(),
+      binding: EventListBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_HOST_LIST,
+      page: () => OfferHostListView(),
+      binding: OfferHostListBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_HOST_DETAIL,
+      page: () => OfferHostDetailView(),
+      binding: OfferHostDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_HOST_ORDER,
+      page: () => OfferHostOrderView(),
+      binding: OfferHostOrderBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_HOST_PROVIDER_LIST,
+      page: () => OfferHostProviderListView(),
+      binding: OfferHostProviderListBinding(),
+    ),
+    GetPage(
+      name: _Paths.OFFER_HOST_PROVIDER_DETAIL,
+      page: () => OfferHostProviderDetailView(),
+      binding: OfferHostProviderDetailBinding(),
     ),
   ];
 }
